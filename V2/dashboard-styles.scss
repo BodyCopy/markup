@@ -4,19 +4,16 @@
   box-sizing: border-box;
 }
 
-// 490px max
-// 370px min
-
 .dashboard-wrapper {
   --min-card-width: 368px;
   --max-card-width: 504px;
   --min-row-height: 112px;
   --max-row-height: 224px;
-  --content-span: 2;
+  --hero-content-span: 2;
   --grid-gap: 32px;
 
   @media screen and(max-width:840px) {
-    --content-span: 1;
+    --hero-content-span: 1;
   }
 
   min-height: 100vh;
@@ -25,7 +22,6 @@
   display: grid;
   grid-template-columns: 1fr minmax(auto, 1800px) 1fr;
   grid-gap: 0;
-  // grid-column-gap: 0;
 }
 
 .widget-grid {
@@ -35,6 +31,7 @@
   grid-column: 2 / 3;
 
   grid-template-columns: repeat(auto-fill, minmax(var(--min-card-width), 1fr));
+
   //do we want to layout to decide the height of the widgets?
   grid-auto-rows: minmax(var(--min-row-height), auto);
   grid-auto-flow: row dense;
@@ -60,7 +57,7 @@
      --widget-row-span: 4;
     }
 
-    //custom layout
+    //hero content
 
     &.search-widget {
       grid-row: 1 / 2;
@@ -89,9 +86,9 @@
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.13);
 }
 
+//utility
+
 .full-width-cell {
   grid-column: 1 / -1;
 }
-.two-column-cell {
-  grid-column: span var(--content-span);
-}
+
