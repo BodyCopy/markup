@@ -33,7 +33,7 @@
   grid-template-columns: repeat(auto-fill, minmax(var(--min-card-width), 1fr));
 
   //do we want to layout to decide the height of the widgets?
-  grid-auto-rows: minmax(var(--min-row-height), auto);
+  grid-auto-rows: var(--min-row-height);
   grid-auto-flow: row dense;
 
   & > .widget-wrapper {
@@ -84,11 +84,16 @@
   border: 1px solid var(--support-color-05);
   border-radius: 4px;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.13);
+  overflow-y: auto;
 }
 
 //utility
 
 .full-width-cell {
   grid-column: 1 / -1;
+}
+
+.two-column-cell {
+  grid-column: span var(--hero-content-span);
 }
 
