@@ -1,0 +1,55 @@
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  place-content: center center;
+}
+
+#userManagementWidget {
+  -webkit-box-shadow: 0px 4px 8px 0.2px black;
+          box-shadow: 0px 4px 8px 0.2px black;
+  border: 1px solid black;
+  height: 600px;
+  width: 368px;
+  overflow: hidden;
+}
+
+.controls {
+  padding: 1rem;
+  border-bottom: 1px solid black;
+}
+
+.content {
+  height: 100%;
+  overflow-y: scroll;
+  font-size: 1.5rem;
+  position: relative;
+}
+
+.content .organization {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.content .organization > * {
+  padding: 0.25rem 0.5rem;
+}
+
+.content .organization__header {
+  font-size: 1.25rem;
+  display: block;
+  background-color: lightgrey;
+  padding: 0.25rem 1rem;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+/*# sourceMappingURL=styles.css.map */
