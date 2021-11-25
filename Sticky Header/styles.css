@@ -1,5 +1,135 @@
+:root {
+  --support-color-90-partial: 210, 16%, 10%;
+  --support-color-80-partial: 210, 12%, 20%;
+  --support-color-70-partial: 210, 8%, 30%;
+  --support-color-60-partial: 210, 6%, 40%;
+  --support-color-50-partial: 210, 4%, 50%;
+  --support-color-40-partial: 210, 4%, 60%;
+  --support-color-30-partial: 210, 4%, 70%;
+  --support-color-20-partial: 210, 4%, 80%;
+  --support-color-10-partial: 210, 8%, 90%;
+  --support-color-05-partial: 210, 12%, 95%;
+  --support-color-02-partial: 210, 12%, 97%;
+  --support-color-01-partial: 210, 8%, 98%;
+  --support-color-90: hsla(var(--support-color-90-partial),1);
+  --support-color-80: hsla(var(--support-color-80-partial),1);
+  --support-color-70: hsla(var(--support-color-70-partial),1);
+  --support-color-60: hsla(var(--support-color-60-partial),1);
+  --support-color-50: hsla(var(--support-color-50-partial),1);
+  --support-color-40: hsla(var(--support-color-40-partial),1);
+  --support-color-30: hsla(var(--support-color-30-partial),1);
+  --support-color-20: hsla(var(--support-color-20-partial),1);
+  --support-color-10: hsla(var(--support-color-10-partial),1);
+  --support-color-05: hsla(var(--support-color-05-partial),1);
+  --support-color-02: hsla(var(--support-color-02-partial),1);
+  --support-color-01: hsla(var(--support-color-01-partial),1);
+  --warning-color-dark:hsla(349, 100%, 35%, 1);
+  --warning-color-base:hsla(352, 75%, 46%, 1);
+  --warning-color-light:hsla(347, 83%, 95%, 1);
+  --success-color-dark:hsla(118, 100%, 16%, 1);
+  --success-color-base:hsla(125, 100%, 25%, 1);
+  --success-color-light:hsla(116, 47%, 93%, 1);
+}
+
+.color-disabled, .disabled {
+  --primary-color-dark: var(--support-color-20);
+  --primary-color-base: var(--support-color-10);
+  --primary-color-light: var(--support-color-05);
+}
+
+:root {
+  /* Default theme
+    Use these partials to retain color consistency when using libraries that cannot interact with a full hsla() string.
+    We use these partials in the material UI style sheet of which many of our components are based.
+    They can also prove useful if you wish the adjust the opacity of a existing color - altho it is not recommended. */
+  --primary-color-90-partial: 198, 82%, 14%;
+  --primary-color-80-partial: 198, 90%, 24%;
+  --primary-color-70-partial: 198, 100%, 34%;
+  --primary-color-60-partial: 198, 80%, 44%;
+  --primary-color-50-partial: 198, 72%, 52%;
+  --primary-color-40-partial: 198, 72%, 60%;
+  --primary-color-30-partial: 198, 72%, 70%;
+  --primary-color-20-partial: 198, 72%, 80%;
+  --primary-color-10-partial: 198, 72%, 90%;
+  --primary-color-05-partial: 198, 70%, 95%;
+  /* Primary
+    to style our colors we over-ride the primary-color property based on the component class name.
+    if you have a component which needs to say have an accent and the default primary and you cannot apply the classes to separate containers
+    there is a backup of --primary-base-permanent think of this as a const binding */
+  /* Use this for components you always want to be the primary color
+    Keep in mind the primary color may not always be the 70 value */
+  --primary-color-base-partial: var(--primary-color-70-partial);
+  --primary-color-darker-1-partial: var(--primary-color-80-partial);
+  --primary-color-darker-2-partial: var(--primary-color-90-partial);
+  --primary-color-lighter-1-partial: var(--primary-color-40-partial);
+  --primary-color-lighter-2-partial: var(--primary-color-20-partial);
+  --primary-color-base: var(--primary-color-70);
+  --primary-color-darker-1: var(--primary-color-80);
+  --primary-color-darker-2: var(--primary-color-90);
+  --primary-color-lighter-1: var(--primary-color-40);
+  --primary-color-lighter-2: var(--primary-color-20);
+  --primary-color-90: hsla(var(--primary-color-90-partial), 1);
+  --primary-color-80: hsla(var(--primary-color-80-partial), 1);
+  --primary-color-70: hsla(var(--primary-color-70-partial), 1);
+  --primary-color-60: hsla(var(--primary-color-60-partial), 1);
+  --primary-color-50: hsla(var(--primary-color-50-partial), 1);
+  --primary-color-40: hsla(var(--primary-color-40-partial), 1);
+  --primary-color-30: hsla(var(--primary-color-30-partial), 1);
+  --primary-color-20: hsla(var(--primary-color-20-partial), 1);
+  --primary-color-10: hsla(var(--primary-color-10-partial), 1);
+  --primary-color-05: hsla(var(--primary-color-05-partial), 1);
+}
+
+.grey {
+  --primary-color-90-partial: var(--support-color-90-partial);
+  --primary-color-80-partial: var(--support-color-80-partial);
+  --primary-color-70-partial: var(--support-color-70-partial);
+  --primary-color-60-partial: var(--support-color-60-partial);
+  --primary-color-50-partial: var(--support-color-50-partial);
+  --primary-color-40-partial: var(--support-color-40-partial);
+  --primary-color-30-partial: var(--support-color-30-partial);
+  --primary-color-20-partial: var(--support-color-20-partial);
+  --primary-color-10-partial: var(--support-color-10-partial);
+  --primary-color-05-partial: var(--support-color-05-partial);
+  --primary-color-base: var(--support-color-70);
+  --primary-color-darker-1: var(--support-color-80);
+  --primary-color-darker-2: var(--support-color-90);
+  --primary-color-lighter-1: var(--support-color-40);
+  --primary-color-lighter-2: var(--support-color-20);
+}
+
+.accent {
+  --primary-color-05-partial: 165, 58%, 95%;
+  --primary-color-10-partial: 165, 60%, 83%;
+  --primary-color-20-partial: 165, 62%, 77%;
+  --primary-color-30-partial: 167, 64%, 70%;
+  --primary-color-40-partial: 167, 67%, 61%;
+  --primary-color-50-partial: 169, 64%, 52%;
+  --primary-color-60-partial: 169, 57%, 48%;
+  --primary-color-70-partial: 169, 56%, 43%;
+  --primary-color-80-partial: 169, 57%, 38%;
+  --primary-color-90-partial: 169, 57%, 32%;
+  --primary-color-90: hsla(var(--primary-color-90-partial), 1);
+  --primary-color-80: hsla(var(--primary-color-80-partial), 1);
+  --primary-color-70: hsla(var(--primary-color-70-partial), 1);
+  --primary-color-60: hsla(var(--primary-color-60-partial), 1);
+  --primary-color-50: hsla(var(--primary-color-50-partial), 1);
+  --primary-color-40: hsla(var(--primary-color-40-partial), 1);
+  --primary-color-30: hsla(var(--primary-color-30-partial), 1);
+  --primary-color-20: hsla(var(--primary-color-20-partial), 1);
+  --primary-color-10: hsla(var(--primary-color-10-partial), 1);
+  --primary-color-05: hsla(var(--primary-color-05-partial), 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  .dark-theme {
+    /* Not supported yet */
+  }
+}
+
 html {
   font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -9,26 +139,29 @@ body {
   display: -ms-grid;
   display: grid;
   place-content: center center;
+  background: var(--support-color-02);
 }
 
 #userManagementWidget {
-  -webkit-box-shadow: 0px 4px 8px 0.2px black;
-          box-shadow: 0px 4px 8px 0.2px black;
-  border: 1px solid black;
-  height: 600px;
+  background: white;
+  -webkit-box-shadow: 0px 2px 3px rgba(47, 60, 59, 0.13);
+          box-shadow: 0px 2px 3px rgba(47, 60, 59, 0.13);
+  border: 1px solid var(--support-color-05);
+  border-radius: 4px;
+  height: 544px;
   width: 368px;
   overflow: hidden;
 }
 
 .controls {
-  padding: 1rem;
-  border-bottom: 1px solid black;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--support-color-10);
 }
 
 .content {
   height: 100%;
   overflow-y: scroll;
-  font-size: 1.5rem;
+  font-size: 1rem;
   position: relative;
 }
 
@@ -39,14 +172,20 @@ body {
 }
 
 .content .organization > * {
-  padding: 0.25rem 0.5rem;
+  color: var(--support-color-90);
+  padding: 1rem 1.5rem;
+}
+
+.content .organization > li {
+  border-bottom: 1px solid var(--support-color-05);
 }
 
 .content .organization__header {
-  font-size: 1.25rem;
+  font-size: 14px;
+  color: var(--support-color-70);
   display: block;
-  background-color: lightgrey;
-  padding: 0.25rem 1rem;
+  background-color: var(--support-color-01);
+  padding: 0.5rem 1.5rem;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
