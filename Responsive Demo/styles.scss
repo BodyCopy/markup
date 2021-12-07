@@ -1,0 +1,358 @@
+@import '../variables';
+
+@mixin webkitScrollBehavior {
+    --scrollbar-color: transparent transparent;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    &:hover::-webkit-scrollbar {
+        display: block;
+    }
+
+    &:hover {
+        --scrollbar-color: var(--support-color-20) var(--support-color-05);
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+//webkit scrollbars
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    border: 0px;
+    background-color: var(--support-color-02);
+}
+
+::-webkit-scrollbar-thumb {
+    // border-radius: 100px;
+    background: hsla(210, 4%, 80%, 0.8);
+    mix-blend-mode: multiply;
+}
+
+//
+
+html {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    background: var(--support-color-02);
+
+    --scrollbar-color: var(--support-color-20) var(--support-color-05);
+    --menu-width: 260px;
+    // --menu-icon-size: 18px;
+    //note add menu scaling;
+}
+
+//normalizing
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+.sideNav {
+    background-color: var(--primary-color-base);
+    display: flex;
+    flex-direction: column;
+    min-height: 0; //very important//flex sets min-height to auto which will overite our overflow
+    width: var(--menu-width);
+    transition: width 0.24s linear;
+    will-change: width;
+    z-index: 1;
+
+
+    &__header {
+        flex: 0 1 auto;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+
+        &>h4 {
+            white-space: nowrap;
+        }
+
+        &>.material-icons {
+            padding: 8px 12px;
+        }
+    }
+
+    &__menu {
+
+        @include webkitScrollBehavior;
+
+        &::-webkit-scrollbar-thumb {
+            background: lightgray;
+            mix-blend-mode: screen;
+        }
+
+        flex: 1 1 auto;
+        overflow-y: auto;
+        overflow-x: hidden;
+        scrollbar-color: var(--scrollbar-color);
+        scrollbar-width: thin;
+        height: 100%;
+
+        &__item {
+            background-color: var(--primary-color-base);
+            display: flex;
+            align-items: center;
+
+            &:hover {
+                filter: brightness(0.9);
+            }
+
+            &__label {
+                padding: 8px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                flex-grow: 1;
+            }
+
+            &>.material-icons {
+                position: relative;
+                padding: 8px 12px;
+
+                &:before {
+                    position: absolute;
+                    display: block;
+                    content: '';
+                    top: 0;
+                    left: 0;
+                    width: 4px;
+                    height: 100%;
+                    background-color: purple;
+                }
+            }
+        }
+    }
+
+    &__footer {
+        flex: 0 1 auto;
+        display: flex;
+        justify-content: end;
+    }
+}
+
+.main-content {
+
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 12px 8px rgba(0, 14, 23, 0.32);
+    z-index: 2;
+
+    &__header {
+        border-bottom: 1px solid grey;
+    }
+
+    &__content {
+        flex: 1 1 auto; //content grows to fill space
+        height: 0px;
+        display: flex;
+
+        &__context-menu {
+            position: relative;
+            flex: 0 0 var(--menu-width);
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid lightgray;
+
+            &-wrapper {
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+                min-height: 0; //like before we need to set this or our flex item won't overflow
+                margin-bottom: 48px; //var(--menu-collapse-btn-size);
+            }
+
+            &__controls {
+                padding: 1rem 1.5rem;
+                border-bottom: 1px solid var(--support-color-10);
+            }
+
+            &__menu {
+                @include webkitScrollBehavior;
+                flex-grow: 1;
+                overflow-y: auto;
+                scrollbar-color: var(--scrollbar-color);
+                scrollbar-width: thin;
+                font-size: 1rem;
+                position: relative;
+                margin-bottom: var(--menu-collapse-btn-size);
+
+                & .organization {
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+
+                    &>* {
+
+                        color: var(--support-color-90);
+                        padding: 1rem 1.5rem;
+                    }
+
+                    &>li {
+                        background-color: white;
+                        border-bottom: 1px solid var(--support-color-05);
+
+                        &:hover {
+                            filter: brightness(0.98);
+                        }
+                    }
+
+                    &__header {
+                        font-size: 14px;
+                        color: var(--support-color-70);
+                        display: block;
+                        background-color: var(--support-color-01);
+                        padding: 0.5rem 1.5rem;
+                        position: sticky;
+                        top: 0;
+                        left: 0;
+                    }
+                }
+            }
+
+            &__footer {
+                background-color: white;
+                z-index: 2;
+                display: flex;
+                position: absolute;
+                justify-content: end;
+                bottom: 0;
+                right: 0;
+                left: 0;
+            }
+        }
+
+        &__grid {
+            flex-grow: 1;
+            display: grid;
+            overflow-y: auto;
+            grid-template-columns: 1fr;
+            grid-template-rows: max-content auto;
+            background-color: lightgreen;
+
+            &__filter-bar {
+                padding: 1rem;
+            }
+
+            &__table {
+                overflow-y: auto;
+            }
+        }
+    }
+}
+
+
+.table-columns {
+    position: sticky;
+    top: 0;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(16ch, 1fr));
+    border-bottom: 1px solid darkblue;
+    z-index: 2;
+
+    &__cell {
+        background-color: white;
+        padding: 1rem;
+    }
+}
+
+.table-cells {
+    display: grid;
+
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(16ch, 1fr));
+    border-bottom: 2px solid grey;
+    background-color: var(--support-color-02);
+    z-index: 1;
+
+    &:hover {
+        filter: brightness(0.9);
+    }
+
+    &__cell {
+        padding: 1rem;
+    }
+}
+
+//menu collapse stuff
+.menu_collapse_btn {
+    --menu-collapse-btn-size: 48px;
+    height: var(--menu-collapse-btn-size);
+    width: var(--menu-collapse-btn-size);
+    border-radius: 0;
+    background-color: white;
+    border: none;
+
+    &:hover {
+        filter: brightness(0.9);
+    }
+}
+
+.collapsed-sideNav-menu {
+    width: 48px;
+}
+
+.collapsed-context-menu {
+    flex-basis: 0px;
+    width: 0;
+    overflow: hidden;
+}
+
+.collapsed-context-menu-1 {
+    flex-basis: 0px;
+    width: 0;
+}
+
+.collapsed {
+    right: var(--menu-collapse-btn-size);
+}
+
+@keyframes animateContextMenuWrapper {
+    0% {
+        width: 48px;
+    }
+
+    90% {
+        flex-basis: 0px;
+        width: 0;
+    }
+
+    100% {
+        overflow: hidden;
+    }
+}
+
+@keyframes animateContextMenu {
+    0% {
+        width: 48px;
+    }
+
+    90% {
+        flex-basis: 0px;
+        width: 0;
+    }
+}
